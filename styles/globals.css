@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+}
+
+html,
+body {
+  background-color: #f1f4f9;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100%;
+}
+
+body > div {
+  display: flex;
+  flex-shrink: 1;
+  min-height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page-wrapper > div > div {
+  padding: 3rem 1rem;
+}
