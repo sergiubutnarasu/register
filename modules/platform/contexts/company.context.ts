@@ -4,9 +4,9 @@ import { Company, CompanyDetails, Register } from "~/modules/excel";
 export interface Props {
   company: Company;
   nextDate: Date;
-  saveCompanyDetails: (details: CompanyDetails) => void;
+  saveCompanyDetails: (details: CompanyDetails) => Promise<void>;
   getRegister: (date: Date) => Register;
-  saveRegister: (register: Register) => void;
+  saveRegister: (register: Register) => Promise<void>;
   deleteRegister: (date: Date) => void;
   getPreviousRegister: (
     registers: Register[],

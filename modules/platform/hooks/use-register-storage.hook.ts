@@ -30,6 +30,8 @@ export const useRegisterStorage = (initialCompany: Company) => {
   const { getItem, setItem } = useStorage<Company>();
 
   useEffect(() => {
+    console.log("test");
+
     let company = getItem(key);
 
     if (company?.registers) {
@@ -43,13 +45,13 @@ export const useRegisterStorage = (initialCompany: Company) => {
   }, [getItem, setCompany]);
 
   const saveCompanyDetails = useCallback(
-    (details: CompanyDetails) => {
+    async (details: CompanyDetails) => {
       const newCompany: Company = {
         ...company,
         ...details,
       };
 
-      setItem(key, newCompany);
+      await setItem(key, newCompany);
       setCompany({ ...newCompany });
     },
     [company, setItem, setCompany]
@@ -73,7 +75,7 @@ export const useRegisterStorage = (initialCompany: Company) => {
   );
 
   const saveRegister = useCallback(
-    (register: Register) => {
+    async (register: Register) => {
       let items = company?.registers ?? [];
 
       const index = getIndexByDate(register.date, items);
@@ -87,7 +89,7 @@ export const useRegisterStorage = (initialCompany: Company) => {
       items = getPrepareData(items);
       company.registers = items;
 
-      setItem(key, company);
+      await setItem(key, company);
       setCompany({ ...company });
     },
     [company, setItem, setCompany]

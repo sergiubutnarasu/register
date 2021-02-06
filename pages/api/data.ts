@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/client";
 import { DriveUtility } from "~/modules/drive";
-import { exportExcel } from "../../modules/excel";
+import { Company } from "../../modules/excel";
 
 export default async (req, res) => {
   if (req.method !== "POST") {
@@ -17,14 +17,11 @@ export default async (req, res) => {
     return;
   }
 
-  const { getConfigContent } = DriveUtility(session.accessToken);
+  const { saveConfigFile } = DriveUtility(session.accessToken);
+  const company = req.body as Company;
 
-  const result = await getConfigContent();
-
-  const buffer = await exportExcel(result);
+  await saveConfigFile(company);
 
   res.statusCode = 200;
-  res.setHeader("Content-Type", "application/vnd.openxmlformats");
-  res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-  return res.end(buffer);
+  return res.end();
 };
