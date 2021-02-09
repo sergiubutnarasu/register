@@ -166,10 +166,10 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.0.2.tgz#a9a3daa55385749cd62fb57d4423ca27ae5f4e81"
   integrity sha512-ILc5/BipD7+GBLmtfnQDMG71KLx0fEpVI5kJw8jN9SoeygMrb4auZhCl7gA6QP3oynocYouJ8piLj1Ol80ZvVw==
 
-"@solness/ui@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.2.tgz#0787a10accaa5fe50bb84b975b158903f40c68c7"
-  integrity sha512-0bMQLx0Tq1MGS87kM8c97qCVghupawx1qx65FY07ccK+VIG6/fyYSiXs6dfU8Kc5XW0Ypnu6/8p6TZHyTWM8Iw==
+"@solness/ui@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.3.tgz#9ed50d07f27e42555e87540e1449a4159ad0bc28"
+  integrity sha512-wF0rT9r97MlXhByKG//Ld75sQbzP1nc3Yj0LROwaJeYFiMMppUbVpo2ZnUtPODHOPzY9cW+RDB1KwMEsWzXYFg==
   dependencies:
     moment "^2.29.1"
     react "^17.0.1"

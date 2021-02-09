@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const DownloadButton: FunctionComponent<Props> = ({ company }) => {
-  const { download } = useDownloadExcel();
+  const { download, loading } = useDownloadExcel();
 
   const handleClick = () => {
     const items = company.registers?.map(({ date, entries }) => ({
@@ -33,6 +33,7 @@ const DownloadButton: FunctionComponent<Props> = ({ company }) => {
 
   return (
     <Button
+      loading={loading}
       size="small"
       icon="download"
       iconPosition="right"

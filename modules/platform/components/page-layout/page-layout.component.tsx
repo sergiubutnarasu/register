@@ -6,9 +6,7 @@ export interface Props {
 }
 
 const PageLayout: FunctionComponent<Props> = ({ children }) => (
-  <div className="page-wrapper  w-full">
-    <Layout>{children}</Layout>
-  </div>
+  <Layout>{children}</Layout>
 );
 
 export default PageLayout;
