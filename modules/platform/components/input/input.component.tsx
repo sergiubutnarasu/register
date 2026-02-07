@@ -1,12 +1,12 @@
-import { FunctionComponent, ReactText } from "react";
-import { useFormContext } from "react-hook-form";
 import { get } from "lodash";
+import { FunctionComponent } from "react";
+import { useFormContext, useFormState } from "react-hook-form";
 
 export interface Props {
   name: string;
   id?: string;
   type?: string;
-  value?: ReactText;
+  value?: string | number;
   placeholder?: string;
   required?: boolean;
   onChange?: () => void;
@@ -21,7 +21,8 @@ const Input: FunctionComponent<Props> = ({
   placeholder,
   onChange,
 }) => {
-  const { register, errors } = useFormContext();
+  const { register } = useFormContext();
+  const { errors } = useFormState();
 
   const defaultTheme =
     "px-3 py-2 w-full text-sm leading-none appearance-none border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100";
@@ -36,10 +37,9 @@ const Input: FunctionComponent<Props> = ({
       step="any"
       className={theme}
       type={type}
-      name={name}
-      ref={register({ required })}
       placeholder={placeholder}
       defaultValue={value}
+      {...register(name, { required })}
       onChange={onChange}
     />
   );

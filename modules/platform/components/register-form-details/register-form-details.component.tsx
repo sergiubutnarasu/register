@@ -1,5 +1,5 @@
 import { Datepicker, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Control, Controller } from "react-hook-form";
 import { Register } from "~/modules/excel";
 
@@ -23,7 +23,7 @@ const RegisterFormDetails: FunctionComponent<Props> = ({
       <Controller
         name="date"
         control={control}
-        render={({ onChange, value }) => (
+        render={({ field: { onChange, value } }) => (
           <Datepicker
             onChange={(date) => {
               onChange(date);
