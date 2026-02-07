@@ -27,7 +27,9 @@ const RegisterTableItem: FunctionComponent<Props> = ({ date }) => {
               icon="close"
               size="xsmall"
               iconColor="gray"
-              onClick={() => deleteRegister(date)}
+              onClick={async () => {
+                await deleteRegister(date);
+              }}
             />
           </div>
         </div>

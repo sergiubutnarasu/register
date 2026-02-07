@@ -14,6 +14,7 @@
     "@solness/ui": "^0.2.12",
     "exceljs": "^4.4.0",
     "isomorphic-unfetch": "^4.0.2",
+    "localforage": "^1.10.0",
     "lodash": "^4.17.23",
     "moment": "^2.30.1",
     "next": "16.1.6",

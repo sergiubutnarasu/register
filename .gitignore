@@ -38,3 +38,5 @@ yarn-error.log*
 
 # Digital Ocean
 _export
+
+/plans

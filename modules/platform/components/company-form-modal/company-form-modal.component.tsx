@@ -12,8 +12,8 @@ export interface Props {
 const CompanyFormModal: FunctionComponent<Props> = ({ open, onClose }) => {
   const { saveCompanyDetails } = useCompanyContext();
 
-  const handleSubmit = (details: CompanyDetails) => {
-    saveCompanyDetails(details);
+  const handleSubmit = async (details: CompanyDetails) => {
+    await saveCompanyDetails(details);
     onClose();
   };
 
