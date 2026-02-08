@@ -4,13 +4,13 @@ import { Company, CompanyDetails, Register } from "~/modules/excel";
 export interface Props {
   company: Company;
   nextDate: Date;
-  saveCompanyDetails: (details: CompanyDetails) => void;
+  saveCompanyDetails: (details: CompanyDetails) => Promise<void>;
   getRegister: (date: Date) => Register;
-  saveRegister: (register: Register) => void;
-  deleteRegister: (date: Date) => void;
+  saveRegister: (register: Register) => Promise<void>;
+  deleteRegister: (date: Date) => Promise<void>;
   getPreviousRegister: (
     registers: Register[],
-    registerDate: Date
+    registerDate: Date,
   ) => {
     lastIndex: number;
     totalValue: number;
@@ -20,16 +20,16 @@ export interface Props {
 export const CompanyContext = React.createContext<Props>({
   company: { name: "", initialIndex: 1, initialValue: 0 },
   nextDate: new Date(),
-  saveCompanyDetails: () => {
+  saveCompanyDetails: async () => {
     throw new Error("saveCompanyDetails is not implemented");
   },
   getRegister: () => {
     throw new Error("getRegister is not implemented");
   },
-  saveRegister: () => {
+  saveRegister: async () => {
     throw new Error("sageRegister is not implemented");
   },
-  deleteRegister: () => {
+  deleteRegister: async () => {
     throw new Error("deleteRegister is not implemented");
   },
   getPreviousRegister: () => {

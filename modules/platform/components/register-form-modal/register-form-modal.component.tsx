@@ -19,9 +19,9 @@ const RegisterFormModal: FunctionComponent<Props> = ({
 }) => {
   const { saveRegister } = useCompanyContext();
 
-  const handleSubmit = (register: Register) => {
+  const handleSubmit = async (register: Register) => {
     if (register.entries?.length) {
-      saveRegister(register);
+      await saveRegister(register);
       onClose();
     }
   };

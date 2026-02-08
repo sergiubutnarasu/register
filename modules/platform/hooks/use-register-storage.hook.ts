@@ -1,8 +1,8 @@
+import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
 import { Company, CompanyDetails, Register } from "~/modules/excel";
-import { getIndexByDate } from "../helpers";
+import { getIndexByDate, migrateFromLocalStorage } from "../helpers";
 import { useStorage } from "./use-storage.hook";
-import moment from "moment";
 
 const sortItems = (items: Register[]) =>
   items.sort((a, b) => (a.date.toISOString() > b.date.toISOString() ? 1 : -1));
@@ -30,29 +30,47 @@ export const useRegisterStorage = (initialCompany: Company) => {
   const { getItem, setItem } = useStorage<Company>();
 
   useEffect(() => {
-    let company = getItem(key);
+    const loadCompanyData = async () => {
+      try {
+        await migrateFromLocalStorage(key);
 
-    if (company?.registers) {
-      company.registers = company.registers?.map((register) => ({
-        ...register,
-        date: new Date(register.date),
-      }));
+        const company = await getItem(key);
 
-      setCompany(company);
-    }
+        if (company?.registers) {
+          company.registers = company.registers?.map((register) => ({
+            ...register,
+            date: new Date(register.date),
+          }));
+
+          setCompany(company);
+        }
+      } catch (err) {
+        console.error("Error loading company data:", err);
+      }
+    };
+
+    loadCompanyData();
   }, [getItem, setCompany]);
 
   const saveCompanyDetails = useCallback(
-    (details: CompanyDetails) => {
-      const newCompany: Company = {
-        ...company,
-        ...details,
-      };
+    async (details: CompanyDetails) => {
+      try {
+        const newCompany: Company = {
+          ...company,
+          ...details,
+        };
 
-      setItem(key, newCompany);
-      setCompany({ ...newCompany });
+        await setItem(key, newCompany);
+        setCompany({ ...newCompany });
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to save company details";
+
+        console.error("Error saving company details:", err);
+        throw err;
+      }
     },
-    [company, setItem, setCompany]
+    [company, setItem, setCompany],
   );
 
   const getRegister = useCallback(
@@ -69,46 +87,62 @@ export const useRegisterStorage = (initialCompany: Company) => {
         entries: [],
       };
     },
-    [company]
+    [company],
   );
 
   const saveRegister = useCallback(
-    (register: Register) => {
-      let items = company?.registers ?? [];
+    async (register: Register) => {
+      try {
+        let items = company?.registers ?? [];
 
-      const index = getIndexByDate(register.date, items);
+        const index = getIndexByDate(register.date, items);
 
-      if (index > -1) {
-        items[index] = register;
-      } else {
-        items.push(register);
+        if (index > -1) {
+          items[index] = register;
+        } else {
+          items.push(register);
+        }
+
+        items = getPrepareData(items);
+        company.registers = items;
+
+        await setItem(key, company);
+        setCompany({ ...company });
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to save register";
+
+        console.error("Error saving register:", err);
+        throw err;
       }
-
-      items = getPrepareData(items);
-      company.registers = items;
-
-      setItem(key, company);
-      setCompany({ ...company });
     },
-    [company, setItem, setCompany]
+    [company, setItem, setCompany],
   );
 
   const deleteRegister = useCallback(
-    (date: Date) => {
-      const items = company?.registers ?? [];
-      const index = getIndexByDate(date, items);
+    async (date: Date) => {
+      try {
+        const items = company?.registers ?? [];
+        const index = getIndexByDate(date, items);
 
-      if (index < 0) {
-        return;
+        if (index < 0) {
+          return;
+        }
+
+        items.splice(index, 1);
+        company.registers = items;
+
+        await setItem(key, company);
+        setCompany({ ...company });
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to delete register";
+
+        console.error("Error deleting register:", err);
+        throw err;
       }
-
-      items.splice(index, 1);
-      company.registers = items;
-
-      setItem(key, company);
-      setCompany({ ...company });
     },
-    [company, setItem, setCompany]
+    [company, setItem, setCompany],
   );
 
   return {
