@@ -1,6 +1,6 @@
 import { Button, Typography } from "@solness/ui";
 import moment from "moment";
-import React, { FunctionComponent, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { useCompanyContext } from "../../contexts";
 import RegisterFormButton from "../register-form-button";
 
@@ -16,12 +16,7 @@ const RegisterTableItem: FunctionComponent<Props> = ({ date }) => {
     <div className="bg-gray-50 p-4 rounded-md mb-1">
       <div className="flex items-center">
         <div className="w-5/6">
-          <RegisterFormButton
-            transparent
-            size="xsmall"
-            icon={undefined}
-            date={date}
-          >
+          <RegisterFormButton transparent size="xsmall" date={date}>
             <Typography size="small">{itemDate}</Typography>
           </RegisterFormButton>
         </div>

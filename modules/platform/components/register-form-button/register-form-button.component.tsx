@@ -1,5 +1,5 @@
 import { Button, IconType, SizeType } from "@solness/ui";
-import React, { FunctionComponent, useState } from "react";
+import { FunctionComponent, ReactNode, useState } from "react";
 import { useCompanyContext } from "../../contexts";
 import RegisterFormModal from "../register-form-modal";
 
@@ -9,6 +9,7 @@ export interface Props {
   title?: string;
   icon?: IconType;
   transparent?: boolean;
+  children?: ReactNode;
 }
 
 const RegisterFormButton: FunctionComponent<Props> = ({

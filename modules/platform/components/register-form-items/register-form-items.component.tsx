@@ -1,7 +1,6 @@
 import { Icon, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
-import { useFieldArray, useFormContext } from "react-hook-form";
-import { RegisterEntry } from "~/modules/excel";
+import { FunctionComponent } from "react";
+import { useFieldArray, useFormState } from "react-hook-form";
 import RegisterFormItem from "../register-form-item";
 
 export interface Props {
@@ -9,11 +8,9 @@ export interface Props {
 }
 
 const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
-  const {
-    formState: { isSubmitted },
-  } = useFormContext();
+  const { isSubmitted } = useFormState();
 
-  const { fields, append, remove } = useFieldArray<RegisterEntry>({
+  const { fields, append, remove } = useFieldArray({
     name: "entries",
   });
 

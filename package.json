@@ -7,24 +7,24 @@
     "build": "next build",
     "start": "next start",
     "start:ci": "next start -H 0.0.0.0 -p ${PORT:-8080}",
-    "export": "npm run build && next export -o _static"
+    "export": "npm run build && next export -o _static",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@solness/ui": "^0.2.3",
-    "exceljs": "^4.2.0",
-    "isomorphic-unfetch": "^3.1.0",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "next": "10.0.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-hook-form": "^6.11.5"
+    "@solness/ui": "^0.2.12",
+    "exceljs": "^4.4.0",
+    "isomorphic-unfetch": "^4.0.2",
+    "lodash": "^4.17.23",
+    "moment": "^2.30.1",
+    "next": "16.1.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.71.1"
   },
   "devDependencies": {
-    "@types/exceljs": "^1.3.0",
-    "@types/lodash": "^4.14.165",
-    "@types/node": "^14.14.9",
-    "@types/react": "^17.0.0",
-    "typescript": "^4.1.2"
+    "@types/lodash": "^4.17.23",
+    "@types/node": "^25.2.1",
+    "@types/react": "^18.3.18",
+    "typescript": "^5.9.3"
   }
 }

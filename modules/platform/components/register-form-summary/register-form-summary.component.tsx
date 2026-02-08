@@ -1,8 +1,7 @@
 import { Typography } from "@solness/ui";
-import React, { FunctionComponent, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { useWatch } from "react-hook-form";
 import { roundNumber } from "~/modules/common";
-import { RegisterEntry } from "~/modules/excel";
 import { calculateTodayTotal } from "../../helpers";
 
 export interface Props {
@@ -10,7 +9,7 @@ export interface Props {
 }
 
 const RegisterFormSummary: FunctionComponent<Props> = ({ initialValue }) => {
-  const fields = useWatch<RegisterEntry[]>({
+  const fields = useWatch({
     name: "entries",
   });
 
