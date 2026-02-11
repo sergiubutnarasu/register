@@ -6,7 +6,7 @@ export const useDownloadExcel = () => {
   const [loading, setLoading] = useState(false);
   const { post } = useFetch();
 
-  const download = async (company: Company) => {
+  const download = async (company: Company, filename: string = "Report.xlsx") => {
     if (loading) {
       return;
     }
@@ -25,7 +25,7 @@ export const useDownloadExcel = () => {
       );
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", `Report.xlsx`);
+      link.setAttribute("download", filename);
 
       document.body.appendChild(link);
       link.click();

@@ -9,15 +9,10 @@ export const getPreviousRegister = (
     moment(date).isBefore(registerDate)
   );
 
-  let lastIndex = 0;
-  let totalValue = 0;
-
-  previousRegisters
-    .flatMap(({ entries }) => entries)
-    .forEach(({ value }, index) => {
-      lastIndex = index + 1;
-      totalValue += +value;
-    });
+  const allPreviousEntries = previousRegisters.flatMap(({ entries }) => entries || []);
+  
+  const lastIndex = allPreviousEntries.length;
+  const totalValue = allPreviousEntries.reduce((sum, entry) => sum + +entry.value, 0);
 
   return {
     lastIndex,
