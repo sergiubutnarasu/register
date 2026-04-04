@@ -40,3 +40,6 @@ yarn-error.log*
 _export
 
 /plans
+
+# Agent Zero project metadata
+.a0proj/
