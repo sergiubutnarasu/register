@@ -606,4 +606,121 @@ describe("DownloadButton", () => {
       expect(screen.getByTestId("download-interval-modal")).toBeInTheDocument();
     });
   });
+  it("should calculate initial value correctly when exporting partial interval", async () => {
+    // Create company with multiple registers across different dates
+    const multiCompany: Company = {
+      name: "Test Company",
+      initialValue: 1000,
+      initialIndex: 10,
+      registers: [
+        {
+          date: new Date("2025-12-15"), // Before range
+          entries: [
+            { description: "Old Entry 1", docNumber: "DOC001", annexNumber: "A1", value: 100 },
+            { description: "Old Entry 2", docNumber: "DOC002", annexNumber: "A2", value: 200 },
+          ],
+        },
+        {
+          date: new Date("2026-01-10"), // First in range
+          entries: [{ description: "Jan Entry", docNumber: "DOC003", annexNumber: "A3", value: 50 }],
+        },
+        {
+          date: new Date("2026-01-20"), // Second in range
+          entries: [
+            { description: "Jan Entry 2", docNumber: "DOC004", annexNumber: "A4", value: 75 },
+            { description: "Jan Entry 3", docNumber: "DOC005", annexNumber: "A5", value: 25 },
+          ],
+        },
+        {
+          date: new Date("2026-02-15"), // After range
+          entries: [{ description: "Feb Entry", docNumber: "DOC006", annexNumber: "A6", value: 300 }],
+        },
+      ],
+    };
+
+    render(<DownloadButton company={multiCompany} />);
+
+    const downloadFilteredButton = screen.getByRole("button", {
+      name: /download filtered/i,
+    });
+    fireEvent.click(downloadFilteredButton);
+
+    const modalConfirmButton = screen.getByTestId("modal-confirm-btn");
+    fireEvent.click(modalConfirmButton);
+
+    await waitFor(() => {
+      // Expected: initialValue = 1000 (base) + 300 (sum of entries before 2026-01-01)
+      // The old entries sum = 100 + 200 = 300
+      expect(mockDownload).toHaveBeenCalledWith(
+        expect.objectContaining({
+          initialValue: 1300, // 1000 + 300
+          initialIndex: 12,   // 10 + 2 entries before range
+          registers: expect.arrayContaining([
+            expect.objectContaining({
+              date: new Date("2026-01-10"),
+            }),
+            expect.objectContaining({
+              date: new Date("2026-01-20"),
+            }),
+          ]),
+        }),
+        expect.any(String),
+      );
+    });
+
+    // Verify only 2 registers are in the filtered export (January 2026 only)
+    expect(mockDownload.mock.calls[0][0].registers).toHaveLength(2);
+    
+    // Verify registers after range are not included
+    const exportedDates = mockDownload.mock.calls[0][0].registers.map((r: any) => r.date.toISOString());
+    expect(exportedDates).not.toContain(new Date("2026-02-15").toISOString());
+    expect(exportedDates).not.toContain(new Date("2025-12-15").toISOString());
+  });
+
+  it("should use base initial value when no registers exist before partial interval", async () => {
+    const companyWithEarlyRegisters: Company = {
+      name: "Test Company",
+      initialValue: 500,
+      initialIndex: 1,
+      registers: [
+        {
+          date: new Date("2026-01-15"), // First register is in range
+          entries: [{ description: "Entry 1", docNumber: "DOC001", annexNumber: "A1", value: 100 }],
+        },
+        {
+          date: new Date("2026-02-15"), // After range
+          entries: [{ description: "Entry 2", docNumber: "DOC002", annexNumber: "A2", value: 200 }],
+        },
+      ],
+    };
+
+    render(<DownloadButton company={companyWithEarlyRegisters} />);
+
+    const downloadFilteredButton = screen.getByRole("button", {
+      name: /download filtered/i,
+    });
+    fireEvent.click(downloadFilteredButton);
+
+    const modalConfirmButton = screen.getByTestId("modal-confirm-btn");
+    fireEvent.click(modalConfirmButton);
+
+    await waitFor(() => {
+      // No registers before the filtered range, so base initial values are used
+      expect(mockDownload).toHaveBeenCalledWith(
+        expect.objectContaining({
+          initialValue: 500,  // Base value, no additions
+          initialIndex: 1,    // Base index, no additions
+          registers: expect.arrayContaining([
+            expect.objectContaining({
+              date: new Date("2026-01-15"),
+            }),
+          ]),
+        }),
+        expect.any(String),
+      );
+    });
+
+    // Only one register should be exported
+    expect(mockDownload.mock.calls[0][0].registers).toHaveLength(1);
+  });
 });
