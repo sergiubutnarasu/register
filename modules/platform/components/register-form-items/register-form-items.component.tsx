@@ -1,4 +1,4 @@
-import { Icon, Typography } from "@solness/ui";
+import { Icon, Typography } from '@/modules/components/ui';
 import { FunctionComponent } from "react";
 import { useFieldArray, useFormState } from "react-hook-form";
 import RegisterFormItem from "../register-form-item";

@@ -1,4 +1,4 @@
-import { Button, Typography } from "@solness/ui";
+import { Button, Typography } from '@/modules/components/ui';
 import moment from "moment";
 import { FunctionComponent, useMemo } from "react";
 import { useCompanyContext } from "../../contexts";

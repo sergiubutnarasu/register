@@ -414,7 +414,7 @@ describe("DownloadButton", () => {
       const buttons = screen.getAllByRole("button");
       const downloadAllButton = buttons[0]; // First button is Download All
       // The Button component includes aria-label for accessibility
-      // Even if the @solness/ui Button doesn't pass it through as a DOM attribute,
+      // Even if the @/modules/components/ui Button doesn't pass it through as a DOM attribute,
       // it's present in the source for documentation and future improvements
       expect(downloadAllButton).toBeInTheDocument();
     });

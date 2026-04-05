@@ -1,4 +1,4 @@
-import { Button, Datepicker, Typography } from "@solness/ui";
+import { Button, Datepicker, Typography } from '@/modules/components/ui';
 import React, { FunctionComponent, useState, useEffect } from "react";
 import Modal from "../modal";
 import { DateRange } from "../../types";

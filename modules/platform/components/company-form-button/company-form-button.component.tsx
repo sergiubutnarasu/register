@@ -1,4 +1,4 @@
-import { Button } from "@solness/ui";
+import { Button } from '@/modules/components/ui';
 import React, { useState } from "react";
 import CompanyFormModal from "../company-form-modal";
 

@@ -5,8 +5,8 @@ import moment from 'moment';
 import DownloadIntervalModal from './download-interval-modal.component';
 import { getPreviousMonthRange } from '../../helpers';
 
-jest.mock('@solness/ui', () => ({
-  ...jest.requireActual('@solness/ui'),
+jest.mock('@/modules/components/ui', () => ({
+  ...jest.requireActual('@/modules/components/ui'),
   Datepicker: ({ value, onChange }: any) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const date = new Date(e.target.value);

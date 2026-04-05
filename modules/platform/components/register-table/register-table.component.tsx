@@ -1,4 +1,4 @@
-import { Panel, Typography } from "@solness/ui";
+import { Panel, Typography } from '@/modules/components/ui';
 import React, { FunctionComponent } from "react";
 import { useCompanyContext } from "../../contexts";
 import RegisterFormButton from "../register-form-button";

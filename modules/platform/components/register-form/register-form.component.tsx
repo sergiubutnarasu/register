@@ -1,4 +1,4 @@
-import { Button } from "@solness/ui";
+import { Button } from '@/modules/components/ui';
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Register } from "~/modules/excel";
