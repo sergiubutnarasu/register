@@ -12,3 +12,6 @@ export type { LayoutProps } from './layout';
 
 export { Datepicker } from './datepicker';
 export type { DatepickerProps } from './datepicker';
+
+export { Icon, iconVariants } from './icon';
+export type { IconProps } from './icon';
