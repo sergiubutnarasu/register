@@ -57,13 +57,13 @@ const StorageConsentBanner: FunctionComponent<Props> = ({
           className="max-w-md"
           data-notice="local-data-info"
         >
-          <div className="bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 pr-10 relative shadow-md">
-            <p className="text-sm text-slate-700 leading-relaxed">
+          <div className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 pr-10 relative shadow-md">
+            <p className="text-sm text-white leading-relaxed">
               Datele sunt salvate local în browser pentru acces offline.
             </p>
             <button
               onClick={handleClose}
-              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded text-slate-500 hover:text-slate-800 hover:bg-slate-200/50 transition"
+              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded text-gray-400 hover:text-white hover:bg-gray-700 transition"
               aria-label="Închide"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
