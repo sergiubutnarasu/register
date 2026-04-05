@@ -77,16 +77,15 @@ const StorageConsentBanner: FunctionComponent<Props> = ({
       {/* Toggle button - always visible */}
       <button
         onClick={handleToggle}
-        className="bg-slate-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-slate-700 active:bg-slate-900 transition flex items-center gap-2 text-sm font-medium"
+        className="bg-gray-800 hover:bg-gray-700 active:bg-gray-900 w-10 h-10 rounded-full shadow-lg transition flex items-center justify-center"
         aria-label={isVisible ? "Ascunde informațiile despre date" : "Afișează informațiile despre date"}
         title="Afișează/ascunde informații despre date"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <ellipse cx="12" cy="12" rx="10" ry="10"/>
           <path d="M2 12h20"/>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
         </svg>
-        <span>Date salvate</span>
       </button>
     </div>
   );
