@@ -9,7 +9,7 @@ const StorageConsentBanner: FunctionComponent<Props> = ({
   storageKey = "app-notice-seen",
 }) => {
   const { getItem, setItem } = useStorage<boolean>();
-  const [isHidden, setIsHidden] = useState<boolean | null>(null);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
   const [isChecking, setIsChecking] = useState(true);
 
   // Check if notice was previously acknowledged
@@ -17,10 +17,12 @@ const StorageConsentBanner: FunctionComponent<Props> = ({
     const checkStatus = async () => {
       try {
         const seen = await getItem(storageKey);
-        setIsHidden(seen ?? false);
+        // Show banner by default (when seen is null/undefined)
+        setIsVisible(!(seen ?? false));
       } catch (error) {
         console.error("Failed to check notice state:", error);
-        setIsHidden(false);
+        // Default to visible on error
+        setIsVisible(true);
       } finally {
         setIsChecking(false);
       }
@@ -32,36 +34,59 @@ const StorageConsentBanner: FunctionComponent<Props> = ({
   const handleClose = useCallback(async () => {
     try {
       await setItem(storageKey, true);
-      setIsHidden(true);
+      setIsVisible(false);
     } catch (error) {
       console.error("Failed to save notice state:", error);
     }
   }, [setItem, storageKey]);
 
-  // Don't show while loading or if already closed
-  if (isChecking || isHidden) {
+  const handleToggle = useCallback(() => {
+    setIsVisible((prev) => !prev);
+  }, []);
+
+  // Don't render while checking storage
+  if (isChecking) {
     return null;
   }
 
   return (
-    <div 
-      className="fixed bottom-4 right-4 z-50 max-w-md"
-      data-notice="local-data-info"
-    >
-      <div className="bg-slate-50 border border-slate-300 rounded-lg px-4 py-3 pr-10 relative shadow-md">
-        <p className="text-sm text-slate-700 leading-relaxed">
-          Your data is saved locally in your browser for offline access.
-        </p>
-        <button
-          onClick={handleClose}
-          className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded text-slate-500 hover:text-slate-800 hover:bg-slate-200/50 transition"
-          aria-label="Close"
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+      {/* Banner - shown when visible */}
+      {isVisible && (
+        <div
+          className="max-w-md"
+          data-notice="local-data-info"
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M13 1L1 13M1 1l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-        </button>
-      </div>
+          <div className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 pr-10 relative shadow-md">
+            <p className="text-sm text-white leading-relaxed">
+              Datele sunt salvate local în browser pentru acces offline.
+            </p>
+            <button
+              onClick={handleClose}
+              className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded text-gray-400 hover:text-white hover:bg-gray-700 transition"
+              aria-label="Închide"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M13 1L1 13M1 1l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Toggle button - always visible */}
+      <button
+        onClick={handleToggle}
+        className="bg-gray-800 hover:bg-gray-700 active:bg-gray-900 w-10 h-10 rounded-full shadow-lg transition flex items-center justify-center"
+        aria-label={isVisible ? "Ascunde informațiile despre date" : "Afișează informațiile despre date"}
+        title="Afișează/ascunde informații despre date"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="12" cy="12" rx="10" ry="10"/>
+          <path d="M2 12h20"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </button>
     </div>
   );
 };
