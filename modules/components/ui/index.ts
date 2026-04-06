@@ -1,5 +1,5 @@
 export { Button, buttonVariants } from './button';
-export type { ButtonProps } from './button';
+export type { ButtonProps, IconType, SizeType } from './button';
 
 export { Typography, typographyVariants } from './typography';
 export type { TypographyProps } from './typography';

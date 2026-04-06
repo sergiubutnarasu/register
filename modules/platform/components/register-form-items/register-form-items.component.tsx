@@ -72,7 +72,7 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
         onClick={addEntry}
       >
         <div className="mr-1">
-          <Icon icon="plus" size="small" color="indigo" />
+          <Icon icon="plus" size="small" variant="indigo" />
         </div>
         <Typography size="xsmall" color="gray" weight="medium">
           Adaugă o intrare nouă

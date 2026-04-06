@@ -9,7 +9,7 @@ const iconVariants = cva("inline-block", {
       medium: "w-5 h-5",
       large: "w-6 h-6",
     },
-    color: {
+    variant: {
       indigo: "text-indigo-600",
       gray: "text-gray-500",
       white: "text-white",
@@ -18,12 +18,12 @@ const iconVariants = cva("inline-block", {
   },
   defaultVariants: {
     size: "medium",
-    color: "gray",
+    variant: "gray",
   },
 });
 
 export interface IconProps
-  extends React.SVGAttributes<SVGSVGElement>,
+  extends Omit<React.SVGAttributes<SVGSVGElement>, 'color'>,
     VariantProps<typeof iconVariants> {
   icon: string;
 }
@@ -138,7 +138,7 @@ const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
 };
 
 const Icon = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ icon, size, color, className, ...props }, ref) => {
+  ({ icon, size, variant, className, ...props }, ref) => {
     const IconComponent = icons[icon];
     
     if (!IconComponent) {
@@ -149,7 +149,7 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(
     return (
       <IconComponent
         ref={ref}
-        className={cn(iconVariants({ size, color, className }))}
+        className={cn(iconVariants({ size, variant, className }))}
         {...props}
       />
     );
@@ -158,4 +158,3 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(
 Icon.displayName = "Icon";
 
 export { Icon, iconVariants };
-export type { IconProps };

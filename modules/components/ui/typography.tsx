@@ -5,18 +5,23 @@ import { cn } from "../lib/utils";
 const typographyVariants = cva("", {
   variants: {
     size: {
+      xsmall: "text-xs",
       small: "text-sm",
       medium: "text-base",
       large: "text-xl",
     },
     weight: {
       normal: "font-normal",
+      medium: "font-medium",
       semibold: "font-semibold",
       bold: "font-bold",
     },
     color: {
       default: "text-gray-900",
       gray: "text-gray-500",
+      red: "text-red-500",
+      white: "text-white",
+      indigo: "text-indigo-600",
     },
   },
   defaultVariants: {

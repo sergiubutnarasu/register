@@ -6,8 +6,8 @@ import * as Popover from "@radix-ui/react-popover";
 import { cn } from "../lib/utils";
 
 export interface DatepickerProps {
-  name: string;
-  label: string;
+  name?: string;
+  label?: string;
   placeholder?: string;
   required?: boolean;
   value?: Date | null;
