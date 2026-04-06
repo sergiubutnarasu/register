@@ -2,7 +2,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
-const iconVariants = cva("inline-block", {
+const iconVariants = cva("inline-flex items-center justify-center", {
   variants: {
     size: {
       small: "w-4 h-4",
@@ -10,7 +10,7 @@ const iconVariants = cva("inline-block", {
       large: "w-6 h-6",
     },
     variant: {
-      indigo: "text-indigo-600",
+      indigo: "text-purple-600",
       gray: "text-gray-500",
       white: "text-white",
       red: "text-red-500",

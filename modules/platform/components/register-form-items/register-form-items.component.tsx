@@ -68,7 +68,7 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
       )}
 
       <div
-        className="py-3 px-2 flex justify-center border-2 border-dashed rounded cursor-pointer"
+        className="py-3 px-2 flex items-center justify-center border-2 border-dashed rounded cursor-pointer"
         onClick={addEntry}
       >
         <div className="mr-1">
