@@ -125,9 +125,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         ) : (
           <span className="flex items-center justify-center">
-            {icon && iconPosition === "left" && renderIcon()}
-            {(title || children) && <span className="flex items-center">{title || children}</span>}
-            {icon && iconPosition === "right" && renderIcon()}
+            {icon && iconPosition === "left" && <span className="inline-flex items-center justify-center">{renderIcon()}</span>}
+            {(title || children) && <span>{title || children}</span>}
+            {icon && iconPosition === "right" && <span className="inline-flex items-center justify-center">{renderIcon()}</span>}
           </span>
         )}
       </Comp>
