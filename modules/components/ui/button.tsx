@@ -104,7 +104,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(
           buttonVariants({ variant: finalVariant, size, className }),
-          isIconOnly && "px-2"
+          isIconOnly && "px-3"
         )}
         ref={ref}
         disabled={disabled || loading}
