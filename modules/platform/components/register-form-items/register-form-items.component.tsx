@@ -71,12 +71,14 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
         className="py-3 px-2 flex items-center justify-center border-2 border-dashed rounded cursor-pointer"
         onClick={addEntry}
       >
-        <div className="mr-1">
+        <div className="mr-1 inline-flex items-center">
           <Icon icon="plus" size="small" variant="indigo" />
         </div>
-        <Typography size="xsmall" color="gray" weight="medium">
-          Adaugă o intrare nouă
-        </Typography>
+        <span className="flex items-center">
+          <Typography size="xsmall" color="gray" weight="medium">
+            Adaugă o intrare nouă
+          </Typography>
+        </span>
       </div>
     </div>
   );
