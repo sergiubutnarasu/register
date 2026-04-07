@@ -16,15 +16,9 @@ const RegisterTable: FunctionComponent = () => {
         actions={
           <>
             <CompanyFormButton />
-
-            <div className="ml-1 sm:ml-2">
-              <RegisterFormButton icon="plus" />
-            </div>
-
+            <RegisterFormButton icon="plus" />
             {Boolean(company.registers?.length) && (
-              <div className="ml-1 sm:ml-2">
-                <DownloadButton company={company} />
-              </div>
+              <DownloadButton company={company} />
             )}
           </>
         }

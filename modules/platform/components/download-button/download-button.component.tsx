@@ -100,7 +100,7 @@ const DownloadButton: FunctionComponent<Props> = ({ company }) => {
 
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <Button
           loading={loading}
           size="small"
