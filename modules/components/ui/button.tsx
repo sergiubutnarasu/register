@@ -126,7 +126,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           <span className="flex items-center justify-center">
             {icon && iconPosition === "left" && renderIcon()}
-            {(title || children) && <span>{title || children}</span>}
+            {(title || children) && <span className="flex items-center">{title || children}</span>}
             {icon && iconPosition === "right" && renderIcon()}
           </span>
         )}
