@@ -21,7 +21,7 @@ const typographyVariants = cva("", {
       gray: "text-gray-500",
       red: "text-red-500",
       white: "text-white",
-      indigo: "text-indigo-600",
+      indigo: "text-violet-600",
     },
   },
   defaultVariants: {

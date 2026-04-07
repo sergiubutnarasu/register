@@ -94,7 +94,7 @@ const Datepicker = React.forwardRef<HTMLInputElement, DatepickerProps>(
               onChange={handleInputChange}
               placeholder={placeholder}
               className={cn(
-                "w-40 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500",
+                "w-40 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500",
                 error ? "border-red-300" : "border-gray-300"
               )}
             />
@@ -152,9 +152,9 @@ const Datepicker = React.forwardRef<HTMLInputElement, DatepickerProps>(
                         className={cn(
                           "w-8 h-8 text-sm rounded-md flex items-center justify-center",
                           selected
-                            ? "bg-indigo-600 text-white"
+                            ? "bg-violet-600 text-white"
                             : today
-                            ? "bg-indigo-100 text-indigo-700"
+                            ? "bg-violet-100 text-violet-700"
                             : "hover:bg-gray-100 text-gray-700"
                         )}
                       >
