@@ -11,8 +11,8 @@ export interface LayoutProps {
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   ({ title, actions, children, className }, ref) => {
     return (
-      <div ref={ref} className={cn("min-h-screen bg-gray-50", className)}>
-        <main className="px-8 py-6">{children}</main>
+      <div ref={ref} className={cn("min-h-screen w-full bg-gray-50", className)}>
+        <main className="w-full px-8 py-6">{children}</main>
       </div>
     );
   }
