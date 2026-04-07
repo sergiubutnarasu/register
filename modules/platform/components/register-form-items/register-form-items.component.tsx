@@ -71,7 +71,9 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
         className="py-3 px-2 flex items-center justify-center border-2 border-dashed rounded cursor-pointer"
         onClick={addEntry}
       >
-        <Icon icon="plus" size="small" variant="indigo" className="flex items-center" />
+        <div className="flex items-center">
+          <Icon icon="plus" size="small" variant="indigo" />
+        </div>
         <Typography as="span" className="flex items-center ml-1" size="xsmall" color="gray" weight="medium">
           Adaugă o intrare nouă
         </Typography>
