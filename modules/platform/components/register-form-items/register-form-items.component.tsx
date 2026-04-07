@@ -72,7 +72,7 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
         onClick={addEntry}
       >
         <div className="flex items-center gap-1">
-          <span className="inline-flex items-center justify-center">
+          <span className="flex items-center">
             <Icon icon="plus" size="small" variant="indigo" />
           </span>
           <Typography as="span" className="flex items-center" size="xsmall" color="gray" weight="medium">
