@@ -76,11 +76,11 @@ const CompanyForm: FunctionComponent<Props> = ({ onSubmit, onCancel }) => {
           </div>
 
           <div className="flex justify-end">
-            <Button type="submit" color="gray" size="small" onClick={onCancel}>
+            <Button type="submit" color="gray" size="small" onClick={onCancel} className="shadow-md">
               Anulează
             </Button>
             <div className="ml-2">
-              <Button type="submit" size="small">
+              <Button type="submit" size="small" className="shadow-md">
                 Salvează detaliile
               </Button>
             </div>

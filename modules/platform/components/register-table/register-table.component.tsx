@@ -1,10 +1,33 @@
-import { Panel, Typography } from '@/modules/components/ui';
-import React, { FunctionComponent } from "react";
+import { Panel, Typography, Button } from '@/modules/components/ui';
+import React, { FunctionComponent, useState } from "react";
 import { useCompanyContext } from "../../contexts";
-import RegisterFormButton from "../register-form-button";
+import RegisterFormModal from "../register-form-modal";
 import DownloadButton from "../download-button";
 import RegisterTableItem from "../register-table-item";
-import CompanyFormButton from "../company-form-button";
+import CompanyFormModal from "../company-form-modal";
+
+const CompanyFormButton: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Button color="gray" size="small" onClick={() => setIsOpen(true)} className="shadow-md">
+        Compania ta
+      </Button>
+      <CompanyFormModal open={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
+};
+
+const RegisterFormButtonWithShadow: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { nextDate } = useCompanyContext();
+  return (
+    <>
+      <Button size="small" icon="plus" onClick={() => setIsOpen(true)} className="shadow-md" />
+      <RegisterFormModal open={isOpen} onClose={() => setIsOpen(false)} title="Adaugă un registru nou" date={nextDate} />
+    </>
+  );
+};
 
 const RegisterTable: FunctionComponent = () => {
   const { company } = useCompanyContext();
@@ -16,9 +39,9 @@ const RegisterTable: FunctionComponent = () => {
         actions={
           <>
             <CompanyFormButton />
-            <RegisterFormButton icon="plus" />
+            <RegisterFormButtonWithShadow />
             {Boolean(company.registers?.length) && (
-              <DownloadButton company={company} />
+              <DownloadButton company={company} buttonClassName="shadow-md" />
             )}
           </>
         }

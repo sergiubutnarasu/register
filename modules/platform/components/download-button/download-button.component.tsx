@@ -12,9 +12,10 @@ import { DateRange } from "../../types";
 
 export interface Props {
   company: Company;
+  buttonClassName?: string;
 }
 
-const DownloadButton: FunctionComponent<Props> = ({ company }) => {
+const DownloadButton: FunctionComponent<Props> = ({ company, buttonClassName }) => {
   const { download, loading } = useDownloadExcel();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -107,6 +108,7 @@ const DownloadButton: FunctionComponent<Props> = ({ company }) => {
           icon="download"
           iconPosition="right"
           onClick={handleDownloadAll}
+          className={buttonClassName}
           aria-label="Download all registers"
           data-testid="download-all-button"
         />
@@ -114,6 +116,7 @@ const DownloadButton: FunctionComponent<Props> = ({ company }) => {
         <Button
           size="small"
           onClick={loading ? undefined : handleDownloadFiltered}
+          className={buttonClassName}
           aria-label="Download filtered registers by date range"
           data-testid="download-filtered-button"
         >
