@@ -26,6 +26,7 @@ export interface IconProps
   extends Omit<React.SVGAttributes<SVGSVGElement>, 'color'>,
     VariantProps<typeof iconVariants> {
   icon: string;
+  color?: "indigo" | "gray" | "white" | "red";
 }
 
 const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -138,7 +139,7 @@ const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
 };
 
 const Icon = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ icon, size, variant, className, ...props }, ref) => {
+  ({ icon, size, variant, color, className, ...props }, ref) => {
     const IconComponent = icons[icon];
     
     if (!IconComponent) {
@@ -146,10 +147,13 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(
       return null;
     }
 
+    // Support color prop as alias for variant
+    const finalVariant = color || variant;
+
     return (
       <IconComponent
         ref={ref}
-        className={cn(iconVariants({ size, variant, className }))}
+        className={cn(iconVariants({ size, variant: finalVariant, className }))}
         {...props}
       />
     );
@@ -157,4 +161,3 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(
 );
 Icon.displayName = "Icon";
 
-export { Icon, iconVariants };

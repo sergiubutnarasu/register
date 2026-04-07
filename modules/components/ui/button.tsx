@@ -39,17 +39,21 @@ export interface ButtonProps
   iconPosition?: "left" | "right";
   transparent?: boolean;
   iconColor?: string;
+  color?: "indigo" | "gray" | "transparent" | "red" | "teal" | "white";
 }
 
 export type IconType = string;
 export type SizeType = "xsmall" | "small" | "medium" | "large";
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, title, loading, disabled, asChild = false, icon, iconPosition = "left", transparent, children, ...props }, ref) => {
+  ({ className, variant, color, size, title, loading, disabled, asChild = false, icon, iconPosition = "left", transparent, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     
+    // Handle color prop (from @solness/ui) as alias for variant
+    const colorVariant = color || variant;
+    
     // Handle transparent boolean prop
-    const finalVariant = transparent ? "transparent" : variant;
+    const finalVariant = transparent ? "transparent" : colorVariant;
     
     const renderIcon = () => {
       if (!icon) return null;
