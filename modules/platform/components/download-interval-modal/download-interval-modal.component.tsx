@@ -109,7 +109,7 @@ const DownloadIntervalModal: FunctionComponent<Props> = ({
         )}
 
         <div className="flex justify-end gap-2 mt-6">
-          <Button onClick={onClose} transparent className="shadow-md">
+          <Button onClick={onClose} color="gray" className="shadow-md">
             Cancel
           </Button>
           <Button
