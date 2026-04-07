@@ -101,7 +101,7 @@ const Datepicker = React.forwardRef<HTMLInputElement, DatepickerProps>(
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content
-              className="bg-white shadow-lg rounded-md border border-gray-200 p-3 z-50 max-h-80"
+              className="bg-white shadow-lg rounded-md border border-gray-200 p-3 z-50",
               sideOffset={4}
               align="start"
             >
