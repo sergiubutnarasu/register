@@ -75,7 +75,7 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
           <div className="mr-1 inline-flex items-center justify-center">
             <Icon icon="plus" size="small" variant="indigo" />
           </div>
-          <Typography size="xsmall" color="gray" weight="medium">
+          <Typography as="span" className="flex items-center" size="xsmall" color="gray" weight="medium">
             Adaugă o intrare nouă
           </Typography>
         </div>
