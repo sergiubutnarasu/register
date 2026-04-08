@@ -1,7 +1,7 @@
 import { Button } from '@/modules/components/ui';
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { Register } from "~/modules/excel";
+import { Register } from "@/modules/excel";
 import { useCompanyContext } from "../../contexts";
 import RegisterFormDetails from "../register-form-details";
 import RegisterFormItems from "../register-form-items";

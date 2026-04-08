@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { filterRegistersByRange } from './filter-registers-by-range.helper';
-import { Register } from '~/modules/excel';
+import { Register } from '@/modules/excel';
 
 describe('filterRegistersByRange', () => {
   const createRegister = (date: Date): Register => ({

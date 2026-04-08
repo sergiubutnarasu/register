@@ -1,6 +1,6 @@
 import { Button, Typography } from '@/modules/components/ui';
 import React, { FunctionComponent } from "react";
-import { RegisterEntry } from "~/modules/excel";
+import { RegisterEntry } from "@/modules/excel";
 import Input from "../input";
 
 export interface Props {

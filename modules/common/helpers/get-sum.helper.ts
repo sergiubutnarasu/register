@@ -1,4 +1,4 @@
-import { RegisterEntry } from "~/modules/excel";
+import { RegisterEntry } from "@/modules/excel";
 
 export const getSum = (entries?: RegisterEntry[]): number => {
   if (!entries?.length) {

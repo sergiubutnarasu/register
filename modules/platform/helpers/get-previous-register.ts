@@ -1,4 +1,4 @@
-import { Register } from "~/modules/excel";
+import { Register } from "@/modules/excel";
 import moment from "moment";
 
 export const getPreviousRegister = (

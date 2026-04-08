@@ -1,5 +1,5 @@
-import { roundNumber } from "~/modules/common";
-import { RegisterEntry } from "~/modules/excel";
+import { roundNumber } from "@/modules/common";
+import { RegisterEntry } from "@/modules/excel";
 
 export const calculateTodayTotal = (fields: RegisterEntry[]) =>
   fields.reduce(

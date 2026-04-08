@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Company, CompanyDetails, Register } from "~/modules/excel";
+import { Company, CompanyDetails, Register } from "@/modules/excel";
 
 export interface Props {
   company: Company;

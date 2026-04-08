@@ -1,5 +1,5 @@
 import { Worksheet } from "exceljs";
-import { roundNumber } from "~/modules/common";
+import { roundNumber } from "@/modules/common";
 import { Register } from "../types";
 import { createDateHeader } from "./create-date-header.helper";
 import { getCellStyle } from "./get-cell-style.helper";

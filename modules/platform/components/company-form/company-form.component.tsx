@@ -1,7 +1,7 @@
 import { Button, Typography } from '@/modules/components/ui';
 import React, { FunctionComponent } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { CompanyDetails } from "~/modules/excel";
+import { CompanyDetails } from "@/modules/excel";
 import { useCompanyContext } from "../../contexts";
 import Input from "../input";
 

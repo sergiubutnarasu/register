@@ -1,5 +1,5 @@
 import { Workbook } from "exceljs";
-import { getSum } from "~/modules/common";
+import { getSum } from "@/modules/common";
 import { DEFAULT_HEADER_ROWS, DEFAULT_ROWS_NUMBER } from "../config";
 import { Company } from "../types";
 import { createEntries } from "./create-entries.helper";

@@ -1,5 +1,5 @@
 import { Worksheet } from "exceljs";
-import { roundNumber } from "~/modules/common";
+import { roundNumber } from "@/modules/common";
 import { Register } from "../types";
 import {
   entriesSum,
