@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Company } from "~/modules/excel";
+import { Company } from "@/modules/excel";
 import useFetch from "./use-fetch.hook";
 
 export const useDownloadExcel = () => {

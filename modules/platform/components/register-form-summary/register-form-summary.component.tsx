@@ -1,7 +1,7 @@
 import { Typography } from '@/modules/components/ui';
 import { FunctionComponent, useMemo } from "react";
 import { useWatch } from "react-hook-form";
-import { roundNumber } from "~/modules/common";
+import { roundNumber } from "@/modules/common";
 import { calculateTodayTotal } from "../../helpers";
 
 export interface Props {

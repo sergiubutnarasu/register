@@ -1,7 +1,7 @@
 import { Datepicker, Typography } from '@/modules/components/ui';
 import { FunctionComponent } from "react";
 import { Control, Controller } from "react-hook-form";
-import { Register } from "~/modules/excel";
+import { Register } from "@/modules/excel";
 
 export interface Props {
   control: Control<Register>;

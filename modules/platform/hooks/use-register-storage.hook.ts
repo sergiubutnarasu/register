@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useCallback, useEffect, useState } from "react";
-import { Company, CompanyDetails, Register } from "~/modules/excel";
+import { Company, CompanyDetails, Register } from "@/modules/excel";
 import { getIndexByDate, migrateFromLocalStorage } from "../helpers";
 import { useStorage } from "./use-storage.hook";
 

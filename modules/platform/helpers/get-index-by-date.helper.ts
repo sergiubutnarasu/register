@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Register } from "~/modules/excel";
+import { Register } from "@/modules/excel";
 
 export const getIndexByDate = (date: Date, items?: Register[]) =>
   items?.findIndex(({ date: itemDate }) => {

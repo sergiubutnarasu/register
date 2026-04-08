@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from "react";
-import { Company } from "~/modules/excel";
+import { Company } from "@/modules/excel";
 import { CompanyContext } from "../../contexts";
 import { useRegisterStorage } from "../../hooks";
 import { getPreviousRegister } from "../../helpers";

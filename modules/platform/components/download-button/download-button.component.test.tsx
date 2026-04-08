@@ -3,7 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DownloadButton, { Props } from "./download-button.component";
 import { useDownloadExcel } from "../../hooks";
-import { Company } from "~/modules/excel";
+import { Company } from "@/modules/excel";
 
 jest.mock("../../hooks");
 jest.mock("../download-interval-modal", () => {

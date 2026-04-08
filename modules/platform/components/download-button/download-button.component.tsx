@@ -1,6 +1,6 @@
 import { Button } from '@/modules/components/ui';
 import React, { FunctionComponent, useState } from "react";
-import { Company } from "~/modules/excel";
+import { Company } from "@/modules/excel";
 import { useDownloadExcel } from "../../hooks";
 import {
   filterRegistersByRange,

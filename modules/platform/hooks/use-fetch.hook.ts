@@ -1,5 +1,5 @@
 import fetch from "isomorphic-unfetch";
-import { stringifyReplacer } from "~/modules/common";
+import { stringifyReplacer } from "@/modules/common";
 
 const useFetch = () => {
   const post = async (

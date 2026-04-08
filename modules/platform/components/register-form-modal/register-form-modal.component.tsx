@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Register } from "~/modules/excel";
+import { Register } from "@/modules/excel";
 import { useCompanyContext } from "../../contexts";
 import Modal from "../modal";
 import RegisterForm from "../register-form";

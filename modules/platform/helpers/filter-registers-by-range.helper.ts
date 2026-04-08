@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Register } from '~/modules/excel';
+import { Register } from '@/modules/excel';
 import { DateRange } from '../types';
 
 export const filterRegistersByRange = (
