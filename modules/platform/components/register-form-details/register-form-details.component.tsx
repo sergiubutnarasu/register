@@ -1,4 +1,4 @@
-import { Datepicker, Typography } from "@solness/ui";
+import { Datepicker, Typography } from '@/modules/components/ui';
 import { FunctionComponent } from "react";
 import { Control, Controller } from "react-hook-form";
 import { Register } from "~/modules/excel";

@@ -1,4 +1,4 @@
-import { Button } from "@solness/ui";
+import { Button } from '@/modules/components/ui';
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Register } from "~/modules/excel";
@@ -62,11 +62,11 @@ const RegisterForm: FunctionComponent<Props> = ({
           <RegisterFormSummary initialValue={initialValue} />
 
           <div className="flex justify-end">
-            <Button type="submit" color="gray" size="small" onClick={onCancel}>
+            <Button type="submit" color="gray" size="small" onClick={onCancel} className="shadow-md">
               Anulează
             </Button>
             <div className="ml-2">
-              <Button type="submit" size="small">
+              <Button type="submit" size="small" className="shadow-md">
                 Salvează registrul
               </Button>
             </div>

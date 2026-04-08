@@ -1,4 +1,4 @@
-import { Layout } from "@solness/ui";
+import { Layout } from '@/modules/components/ui';
 import React, { FunctionComponent, ReactNode } from "react";
 
 export interface Props {

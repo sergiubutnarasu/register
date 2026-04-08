@@ -1,4 +1,4 @@
-import { Button, Datepicker, Typography } from "@solness/ui";
+import { Button, Datepicker, Typography } from '@/modules/components/ui';
 import React, { FunctionComponent, useState, useEffect } from "react";
 import Modal from "../modal";
 import { DateRange } from "../../types";
@@ -109,12 +109,13 @@ const DownloadIntervalModal: FunctionComponent<Props> = ({
         )}
 
         <div className="flex justify-end gap-2 mt-6">
-          <Button onClick={onClose} transparent>
+          <Button onClick={onClose} color="gray" className="shadow-md">
             Cancel
           </Button>
           <Button
             onClick={isDisabled ? undefined : handleConfirm}
             color={isDisabled ? "gray" : "indigo"}
+            className="shadow-md"
           >
             Confirm
           </Button>

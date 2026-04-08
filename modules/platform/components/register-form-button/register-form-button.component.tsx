@@ -1,4 +1,4 @@
-import { Button, IconType, SizeType } from "@solness/ui";
+import { Button, IconType, SizeType } from '@/modules/components/ui';
 import { FunctionComponent, ReactNode, useState } from "react";
 import { useCompanyContext } from "../../contexts";
 import RegisterFormModal from "../register-form-modal";

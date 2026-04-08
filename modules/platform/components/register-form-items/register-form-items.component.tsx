@@ -1,4 +1,4 @@
-import { Icon, Typography } from "@solness/ui";
+import { Icon, Typography } from '@/modules/components/ui';
 import { FunctionComponent } from "react";
 import { useFieldArray, useFormState } from "react-hook-form";
 import RegisterFormItem from "../register-form-item";
@@ -68,15 +68,17 @@ const RegisterFormItems: FunctionComponent<Props> = ({ startIndex }) => {
       )}
 
       <div
-        className="py-3 px-2 flex justify-center border-2 border-dashed rounded cursor-pointer"
+        className="py-3 px-2 flex items-center justify-center border-2 border-dashed rounded cursor-pointer"
         onClick={addEntry}
       >
-        <div className="mr-1">
-          <Icon icon="plus" size="small" color="indigo" />
+        <div className="flex items-center gap-1">
+          <span className="flex items-center">
+            <Icon icon="plus" size="small" variant="indigo" />
+          </span>
+          <Typography as="span" className="flex items-center" size="xsmall" color="gray" weight="medium">
+            Adaugă o intrare nouă
+          </Typography>
         </div>
-        <Typography size="xsmall" color="gray" weight="medium">
-          Adaugă o intrare nouă
-        </Typography>
       </div>
     </div>
   );

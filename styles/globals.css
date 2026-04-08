@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   height: 100%;
@@ -16,7 +20,6 @@ body {
 body > div {
   display: flex;
   flex-shrink: 1;
-  min-height: 100%;
 }
 
 a {

@@ -1,4 +1,4 @@
-import { Typography } from "@solness/ui";
+import { Typography } from '@/modules/components/ui';
 import { FunctionComponent, useMemo } from "react";
 import { useWatch } from "react-hook-form";
 import { roundNumber } from "~/modules/common";
