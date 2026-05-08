@@ -5,6 +5,7 @@ import RegisterFormModal from "../register-form-modal";
 import DownloadButton from "../download-button";
 import RegisterTableItem from "../register-table-item";
 import CompanyFormModal from "../company-form-modal";
+import PanelActionsMenu from "../panel-actions-menu";
 
 const CompanyFormButton: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,13 +38,13 @@ const RegisterTable: FunctionComponent = () => {
       <Panel
         title="Registre"
         actions={
-          <>
+          <PanelActionsMenu>
             <CompanyFormButton />
             <RegisterFormButtonWithShadow />
             {Boolean(company.registers?.length) && (
               <DownloadButton company={company} buttonClassName="shadow-md" />
             )}
-          </>
+          </PanelActionsMenu>
         }
       >
         {!company.registers?.length && (
