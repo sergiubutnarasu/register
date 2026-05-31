@@ -43,3 +43,4 @@ _export
 
 # Agent Zero project metadata
 .a0proj/
+.worktrees
